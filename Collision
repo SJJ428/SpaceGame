@@ -1,0 +1,22 @@
+
+var didiumAdded = false;
+
+
+for (var i = 0; i < ds_list_size(global.inv); i++) {
+    var inv_item = global.inv[| i];
+    
+    if (is_array(inv_item) && inv_item[0] == "Didium") {
+        inv_item[1] += 1; 
+        global.inv[| i] = inv_item; 
+        didiumAdded = true;
+        break;
+    }
+}
+
+
+if (!didiumAdded) {
+    ds_list_add(global.inv, ["Didium", 1]);
+}
+
+
+instance_destroy();
