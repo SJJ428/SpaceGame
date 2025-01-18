@@ -1,0 +1,87 @@
+/// @description Shop logic
+
+// Open shop
+if (!shopOpen && place_meeting(x, y + 10, oPlayer) && keyboard_check_pressed(ord("E"))) {
+    shopOpen = true;
+    global.shop = true;
+}
+// Close shop
+else if (shopOpen && keyboard_check_pressed(vk_escape)) {
+    shopOpen = false;
+    global.shop = false;
+}
+
+// Shop is open
+if (shopOpen) {
+    selectedAnim = lerp(selectedAnim, selected, 0.1);
+    
+    // Down
+    if (keyboard_check_pressed(vk_down)) {
+        selected++;
+        if (selected == itemCount) selected = 0;
+    }
+    
+    // Up
+    if (keyboard_check_pressed(vk_up)) {
+        selected--;
+        if (selected < 0) selected = itemCount - 1;
+    }
+    
+    // Buy item (only once)
+    var arr = items[| selected];
+    var item = arr[0];
+    var rockCost = arr[1];
+    var didiumCost = arr[2];
+    var description = arr[3];
+    var bought = arr[4];
+    var sprite = asset_get_index("sItem_" + item);
+    
+    if (keyboard_check_pressed(vk_enter)) {
+
+        if (!bought) {
+
+            var rocks = 0;
+            var didium = 0;
+
+            for (var i = 0; i < ds_list_size(global.inv); i++) {
+                var inv_item = global.inv[| i];
+                
+                if (is_array(inv_item)) {
+                    if (inv_item[0] == "Rock") {
+                        rocks = inv_item[1];
+                    }
+                    if (inv_item[0] == "Didium") {
+                        didium = inv_item[1];
+                    }
+                }
+            }
+
+
+            if (rocks >= rockCost && didium >= didiumCost) {
+                rocks -= rockCost;
+                didium -= didiumCost;
+
+                // Update inventory
+                for (var i = 0; i < ds_list_size(global.inv); i++) {
+                    var inv_item = global.inv[| i];
+                    
+                    if (is_array(inv_item)) {
+                        if (inv_item[0] == "Rock") {
+                            inv_item[1] = rocks;
+                            global.inv[| i] = inv_item;
+                        }
+                        if (inv_item[0] == "Didium") {
+                            inv_item[1] = didium;
+                            global.inv[| i] = inv_item;
+                        }
+                    }
+                }
+                
+
+                arr[4] = true;
+                items[| selected] = arr; 
+                lastBoughtItemImage = sprite;
+            }
+        }
+    }
+}
