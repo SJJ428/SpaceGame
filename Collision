@@ -1,0 +1,20 @@
+
+var rockAdded = false;
+
+for (var i = 0; i < ds_list_size(global.inv); i++) {
+    var inv_item = global.inv[| i];
+    
+    if (is_array(inv_item) && inv_item[0] == "Rock") {
+        inv_item[1] += 1; // Add one rock to the existing stack
+        global.inv[| i] = inv_item; // Update the inventory
+        rockAdded = true;
+        break;
+    }
+}
+
+
+if (!rockAdded) {
+    ds_list_add(global.inv, ["Rock", 1]);
+}
+
+instance_destroy();
