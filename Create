@@ -1,0 +1,27 @@
+shopOpen = false; 
+global.shop = false; 
+
+selected = 0;
+selectedAnim = 0;
+
+// Items 
+items = ds_list_create();
+
+ds_list_add(items, ["Mine", 1, 1, "A Mine to gather more resources", false]);
+ds_list_add(items, ["Well", 1, 1, "A Well to collect water", false]);
+ds_list_add(items, ["Farm", 1, 1, "A Farm to grow food", false]);
+ds_list_add(items, ["House", 1, 1, "A House to live in", false]); 
+
+itemCount = ds_list_size(items);
+
+// GUI
+guiWidth = display_get_gui_width();
+guiHeight = display_get_gui_height();
+
+menuWidth = guiWidth * 0.3;
+menuMargin = guiWidth * 0.1;
+
+previewWidth = (guiWidth - (menuWidth + menuMargin));
+
+
+lastBoughtItemImage = undefined; 
