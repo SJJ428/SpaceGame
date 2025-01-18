@@ -1,0 +1,35 @@
+
+draw_self();
+
+var rockCount = 0;
+var carrotCount = 0;
+var didiumCount = 0;
+var waterCount = 0;
+
+// Check inventory for each item
+for (var i = 0; i < ds_list_size(global.inv); i++) {
+    var inv_item = global.inv[| i];
+    
+    if (is_array(inv_item)) {
+        var item_name = inv_item[0];
+        var item_quantity = inv_item[1];
+
+        // Update item counts
+        if (item_name == "Rock") {
+            rockCount = item_quantity;
+        } else if (item_name == "Carrot") {
+            carrotCount = item_quantity;
+        } else if (item_name == "Didium") {
+            didiumCount = item_quantity;
+        } else if (item_name == "Water") {
+            waterCount = item_quantity;
+        }
+    }
+}
+
+
+// Display item counts with increased font size
+draw_text(900, 32, "Rock: " + string(rockCount));
+draw_text(900, 48, "Didium: " + string(didiumCount));
+draw_text(900, 64, "Carrot: " + string(carrotCount));
+draw_text(900, 80, "Water: " + string(waterCount));
