@@ -14,42 +14,44 @@ draw_set_color(c_white);
 var itemSpacing = 60; 
 
 // Draw menu items
-for (var i = 0; i < itemCount; i++) {
-    var arr = items[| i];
-    var item = arr[0];
-    var rockCost = arr[1];
-    var didiumCost = arr[2];
-    var bought = arr[4];
+if (ds_exists(global.items, ds_type_list)) {
+    for (var i = 0; i < ds_list_size(global.items); i++) {
+        var arr = global.items[| i];
+        var item = arr[0];
+        var rockCost = arr[1];
+        var didiumCost = arr[2];
+        var bought = arr[4];
 
-    // Draw position
-    var _x = menuMargin + menuWidth / 2;
-    var _y = (guiHeight / 2) + (i - selectedAnim) * itemSpacing;
-    
-    // Draw scale
-    var s = 1;
-    if (i == selected) s = 1.4;
-    
-    // Selected item name
-    if (i == selected) item = "> " + item + " <";
-    
-    // Draw item
-    draw_set_halign(fa_center);
-    draw_set_valign(fa_middle);
-    draw_text_transformed(_x, _y, item, s, s, 0);
-    
-    // Draw item costs (Rocks and Didium)
-    draw_text(_x, _y + 16, "Cost: " + string(rockCost) + " Rock, " + string(didiumCost) + " Didium");
+        // Draw position
+        var _x = menuMargin + menuWidth / 2;
+        var _y = (guiHeight / 2) + (i - selectedAnim) * itemSpacing;
 
-    if (bought) {
-        draw_text(_x, _y + 32, "(Already Purchased)");
+        // Draw scale
+        var s = 1;
+        if (i == selected) s = 1.4;
+
+        // Selected item name
+        if (i == selected) item = "> " + item + " <";
+
+        // Draw item
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_middle);
+        draw_text_transformed(_x, _y, item, s, s, 0);
+
+        // Draw item costs (Rocks and Didium)
+        draw_text(_x, _y + 16, "Cost: " + string(rockCost) + " Rock, " + string(didiumCost) + " Didium");
+
+        if (bought) {
+            draw_text(_x, _y + 32, "(Already Purchased)");
+        }
+
+        draw_set_valign(fa_left);
+        draw_set_halign(fa_left);
     }
-    
-    draw_set_valign(fa_left);
-    draw_set_halign(fa_left);
 }
 
 // Draw selected item preview and description
-var arr = items[| selected];
+var arr = global.items[| selected];
 var item = arr[0];
 var sprite = asset_get_index("sItem_" + item);
 var desc = arr[3];
@@ -57,7 +59,7 @@ var desc = arr[3];
 var _x = (menuMargin + menuWidth) + previewWidth / 2;
 var _y = (guiHeight / 2);
 
-// Draw sprite 
+// Draw sprite
 if (sprite_exists(sprite)) {
     var s = 2;
     draw_sprite_ext(sprite, 0, _x, _y - 24, s, s, 0, -1, 1);
