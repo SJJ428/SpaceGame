@@ -1,5 +1,3 @@
-/// @description Shop logic
-
 // Open shop
 if (!shopOpen && place_meeting(x, y + 10, oPlayer) && keyboard_check_pressed(ord("E"))) {
     shopOpen = true;
