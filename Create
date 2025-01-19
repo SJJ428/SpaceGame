@@ -6,6 +6,4 @@ global.inv = ds_list_create();
 ds_list_add(global.inv, ["Rock", 0]);
 ds_list_add(global.inv, ["Didium", 0]);
 
-var rockCount = 0;
-var didiumCount = 0;
 
