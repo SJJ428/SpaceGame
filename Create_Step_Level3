@@ -1,0 +1,37 @@
+////Create
+Timer = 0;
+
+Interval = 600;   // (10 seconds)
+
+// Random Didium generation range
+didiumMin = 3;
+didiumMax = 5;
+
+
+////Step
+// Increment the timer
+Timer++;
+
+// Check if the timer has reached the interval
+if (Timer >= Interval) {
+    Timer = 0;
+
+    // Add 5 Rocks to the inventory
+    for (var i = 0; i < ds_list_size(global.inv); i++) {
+        var inv_item = global.inv[| i];
+        if (is_array(inv_item) && inv_item[0] == "Rock") {
+            inv_item[1] += 15;
+            global.inv[| i] = inv_item;
+        }
+    }
+
+    // Add 3-5 Didium to the inventory
+    var randomDidium = irandom_range(didiumMin, didiumMax);
+    for (var i = 0; i < ds_list_size(global.inv); i++) {
+        var inv_item = global.inv[| i];
+        if (is_array(inv_item) && inv_item[0] == "Didium") {
+            inv_item[1] += randomDidium;
+            global.inv[| i] = inv_item;
+        }
+    }
+}
