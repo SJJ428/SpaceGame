@@ -17,11 +17,11 @@ for (var i = 0; i < ds_list_size(global.inv); i++) {
     }
 }
 
-// Display item counts
+// Item counts
 draw_text(900, 32, "Rock: " + string(rockCount));
 draw_text(900, 48, "Didium: " + string(didiumCount));
 
-// Display item placement keys
+// Item placement keys
 draw_text(200, 900, "Mine (1)");
 draw_text(400, 900, "Well (2)");
 draw_text(600, 900, "Farm (3)");
