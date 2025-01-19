@@ -6,7 +6,7 @@ Interval = 600;   // (10 seconds)
 // Random Didium generation range
 didiumMin = 3;
 didiumMax = 5;
-
+//////////////////Upgrading code below
 shopOpen = false; 
 global.shop = false; 
 
