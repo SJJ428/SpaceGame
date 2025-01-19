@@ -1,10 +1,5 @@
 draw_self();
 
-var rockCount = 0;
-var carrotCount = 0;
-var didiumCount = 0;
-var waterCount = 0;
-
 // Check inventory for each item
 for (var i = 0; i < ds_list_size(global.inv); i++) {
     var inv_item = global.inv[| i];
@@ -26,5 +21,4 @@ if (item_name == "Rock") {
 // Display item counts
 draw_text(900, 32, "Rock: " + string(rockCount));
 draw_text(900, 48, "Didium: " + string(didiumCount));
-
 
