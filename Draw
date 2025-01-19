@@ -1,4 +1,3 @@
-
 draw_self();
 
 var rockCount = 0;
@@ -15,14 +14,10 @@ for (var i = 0; i < ds_list_size(global.inv); i++) {
         var item_quantity = inv_item[1];
 
         // Update item counts
-        if (item_name == "Rock") {
+if (item_name == "Rock") {
             rockCount = item_quantity;
-        } else if (item_name == "Carrot") {
-            carrotCount = item_quantity;
-        } else if (item_name == "Didium") {
+        }  else if (item_name == "Didium") {
             didiumCount = item_quantity;
-        } else if (item_name == "Water") {
-            waterCount = item_quantity;
         }
     }
 }
@@ -31,5 +26,5 @@ for (var i = 0; i < ds_list_size(global.inv); i++) {
 // Display item counts
 draw_text(900, 32, "Rock: " + string(rockCount));
 draw_text(900, 48, "Didium: " + string(didiumCount));
-draw_text(900, 64, "Carrot: " + string(carrotCount));
-draw_text(900, 80, "Water: " + string(waterCount));
+
+
