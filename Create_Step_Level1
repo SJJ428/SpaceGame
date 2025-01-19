@@ -6,7 +6,7 @@ Interval = 600;   // (10 seconds)
 // Random Didium generation range
 didiumMin = 0;
 didiumMax = 1;
-
+//////////////////Upgrading code below
 shopOpen = false; 
 global.shop = false; 
 
@@ -61,7 +61,7 @@ if (Timer >= Interval) {
         }
     }
 }
-
+//////////////////Upgrading code below
 if (!shopOpen && place_meeting(x, y + 10, oPlayer) && keyboard_check_pressed(ord("E"))) {
     shopOpen = true;
     global.shop = true;
