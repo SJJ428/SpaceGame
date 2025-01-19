@@ -24,7 +24,7 @@ if (Timer >= Interval) {
         }
     }
 
-    // Add random Didium to the inventory
+    // Add 0-1 Didium to the inventory
     var randomDidium = irandom_range(didiumMin, didiumMax);
     for (var i = 0; i < ds_list_size(global.inv); i++) {
         var inv_item = global.inv[| i];
