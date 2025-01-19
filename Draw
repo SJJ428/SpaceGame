@@ -28,7 +28,7 @@ for (var i = 0; i < ds_list_size(global.inv); i++) {
 }
 
 
-// Display item counts with increased font size
+// Display item counts
 draw_text(900, 32, "Rock: " + string(rockCount));
 draw_text(900, 48, "Didium: " + string(didiumCount));
 draw_text(900, 64, "Carrot: " + string(carrotCount));
