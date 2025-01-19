@@ -4,17 +4,22 @@ global.shop = false;
 selected = 0;
 selectedAnim = 0;
 
-// Items 
-items = ds_list_create();
+// Initialize global.items if it doesn't exist
+if (!ds_exists(global, ds_type_list)) {
+    global.items = ds_list_create();
+}
 
-ds_list_add(items, ["Mine", 1, 1, "A Mine to gather more resources", false]);
-ds_list_add(items, ["Well", 1, 1, "A Well to collect water", false]);
-ds_list_add(items, ["Farm", 1, 1, "A Farm to grow food", false]);
-ds_list_add(items, ["House", 1, 1, "A House to live in", false]); 
+// If items list is empty, populate it with default shop items
+if (ds_list_size(global.items) == 0) {
+    ds_list_add(global.items, ["Mine", 1, 1, "", false]);
+    ds_list_add(global.items, ["Well", 1, 1, "", false]);
+    ds_list_add(global.items, ["Farm", 1, 1, "", false]);
+    ds_list_add(global.items, ["House", 1, 1, "", false]);
+}
 
-itemCount = ds_list_size(items);
+itemCount = ds_list_size(global.items);
 
-// GUI
+// GUI setup
 guiWidth = display_get_gui_width();
 guiHeight = display_get_gui_height();
 
@@ -24,4 +29,3 @@ menuMargin = guiWidth * 0.1;
 previewWidth = (guiWidth - (menuWidth + menuMargin));
 
 
-lastBoughtItemImage = undefined; 
