@@ -1,14 +1,13 @@
-
 if (!shopOpen) exit;
 
+// Draw background image
+var bgSprite = asset_get_index("sShop_Screen"); 
+if (sprite_exists(bgSprite)) {
+    draw_sprite(bgSprite, 500, 500, 500); 
+}
 
-// Background
+// Background color and transparency
 draw_set_color(c_black);
-draw_set_alpha(0.8);
-draw_rectangle(0, 0, guiWidth, guiHeight, 0);
-draw_set_alpha(0.5);
-draw_rectangle(menuMargin, 0, menuMargin + menuWidth, guiHeight, 0);
-draw_set_alpha(1);
 draw_set_color(c_white);
 
 // Vertical spacing between items
@@ -40,7 +39,6 @@ for (var i = 0; i < itemCount; i++) {
     
     // Draw item costs (Rocks and Didium)
     draw_text(_x, _y + 16, "Cost: " + string(rockCost) + " Rock, " + string(didiumCost) + " Didium");
-
 
     if (bought) {
         draw_text(_x, _y + 32, "(Already Purchased)");
