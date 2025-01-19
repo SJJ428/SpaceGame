@@ -7,6 +7,13 @@ Interval = 600;   // (10 seconds)
 didiumMin = 3;
 didiumMax = 5;
 
+shopOpen = false; 
+global.shop = false; 
+
+
+/////////////////////////////////////////////////////////////////
+
+
 
 ////Step
 // Increment the timer
@@ -25,7 +32,7 @@ if (Timer >= Interval) {
         }
     }
 
-    // Add 3-5 Didium to the inventory
+    // Add random Didium to the inventory
     var randomDidium = irandom_range(didiumMin, didiumMax);
     for (var i = 0; i < ds_list_size(global.inv); i++) {
         var inv_item = global.inv[| i];
@@ -35,3 +42,4 @@ if (Timer >= Interval) {
         }
     }
 }
+
